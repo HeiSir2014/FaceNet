@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+  <image class="canvas" src="{{face_img}}" mode="aspectFit"></image>
+  <canvas canvas-id="face-canvas" class="canvas" />
+  <text class="face_info" style="color:{{face_info_color}}">{{face_info}}</text>
+  <button class="btn_upload" type="primary" bindtap="btn_upload">请选择一张相片</button>
+</view>
+
+

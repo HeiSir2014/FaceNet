@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#09bb07",
+    "navigationBarTitleText": "脸网",
+    "navigationBarTextStyle":"light",
+    "enablePullDownRefresh":true
+  }
+}
