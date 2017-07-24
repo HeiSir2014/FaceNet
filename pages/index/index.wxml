@@ -1,9 +1,14 @@
 <!--index.wxml-->
 <view class="container">
-  <image class="canvas" src="{{face_img}}" mode="aspectFit"></image>
+  <image class="canvas" src="{{face_img}}" mode="aspectFit" bindload="face_img_load"></image>
+  <text class="face_mark" style="left:{{face_mark_left}};top:{{face_mark_top}}">{{face_mark_name}}</text>
   <canvas canvas-id="face-canvas" class="canvas" />
   <text class="face_info" style="color:{{face_info_color}}">{{face_info}}</text>
-  <button class="btn_upload" type="primary" bindtap="btn_upload">请选择一张相片</button>
+  <view class="button_container">
+    <button class="btn_upload" type="primary" bindtap="btn_upload">请选择一张相片</button>
+    <input placeholder="他是谁"  bindinput="bindKeyInput" value="{{mark_input}}" style="display:{{mark_display}}" />
+    <button class="btn_mark" type="primary" bindtap="btn_mark" style="display:{{mark_display}};max-width:60px;" bindtap="btn_mark" >标记</button>
+  </view>
 </view>
 
 
