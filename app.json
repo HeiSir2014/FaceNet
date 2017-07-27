@@ -4,7 +4,7 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#09bb07",
+    "navigationBarBackgroundColor": "#40A6FF",
     "navigationBarTitleText": "脸网",
     "navigationBarTextStyle":"light",
     "enablePullDownRefresh":true

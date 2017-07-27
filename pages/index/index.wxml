@@ -1,14 +1,25 @@
 <!--index.wxml-->
 <view class="container">
-  <image class="canvas" src="{{face_img}}" mode="aspectFit" bindload="face_img_load"></image>
-  <text class="face_mark" style="left:{{face_mark_left}};top:{{face_mark_top}}">{{face_mark_name}}</text>
+  <view class="mark_pael" style="display:{{mark_display}}">
+    <picker class="picker" bindchange="bindPickerChange" value="{{face_all_index}}" range="{{face_marks}}" range-key="index" mode="selector">
+      <view class="picker">
+        {{face_marks[face_all_index].index}}
+      </view>
+    </picker>
+    <input placeholder="他(她)是谁"  bindinput="bindKeyInput" value="{{face_marks[face_all_index].name}}" />
+    <button class="btn_mark" type="primary" bindtap="btn_mark" >标记</button>
+    <button class="btn_return" type="primary" bindtap="btn_mark_hide" >返回</button>
+  </view>
+  
+  <image class="canvas canvas_img" src="{{face_img}}" mode="{{face_img_mode}}" bindload="face_img_load"></image>
+  <block wx:key="face" wx:for="{{face_marks}}">
+    <text id="{{item.id}}" class="face_mark" style="right:{{item.right}};top:{{item.top}};width:35%;">{{item.label}}</text>
+  </block>
   <canvas canvas-id="face-canvas" class="canvas" />
   <text class="face_info" style="color:{{face_info_color}}">{{face_info}}</text>
   <view class="button_container">
-    <button class="btn_upload" type="primary" bindtap="btn_upload">请选择一张相片</button>
-    <input placeholder="他是谁"  bindinput="bindKeyInput" value="{{mark_input}}" style="display:{{mark_display}}" />
-    <button class="btn_mark" type="primary" bindtap="btn_mark" style="display:{{mark_display}};max-width:60px;" bindtap="btn_mark" >标记</button>
-  </view>
+    <button class="btn_upload" type="primary" bindtap="btn_upload">选 择 一 张 相 片</button>
+    </view>
 </view>
 
 

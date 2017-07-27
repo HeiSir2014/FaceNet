@@ -17,19 +17,22 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 200rpx;
 }
 
 .face_info{
-  color: #aaa;
   position: fixed;
-  bottom: 50px;
-  line-height: 1.5;
-  font-size: 14px;
+  bottom: 100rpx;
+  line-height: 1.8;
+  font-size: 32rpx;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  padding: 5rpx 0;
 }
 
 .button_container{
-  bottom: 10px;
+  bottom: 0px;
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -41,17 +44,25 @@
 
 .button_container button{
   display: inline-block;
-  line-height:2;
-  margin:0 2px;
-  padding: 0 5px;
-  width: 100%
+  line-height:90rpx;
+  margin:0 10rpx;
+  width: 100%;
+  background-color:#5DC55D;
+  height: 90rpx;
+  font-weight: 400;
+  border-radius: 20rpx 20rpx 0rpx 0rpx;
+  box-sizing: border-box;
 }
 
 .canvas {
   position: fixed;
   width:100%;
-  height: calc(100% - 100px);
+  height: 100%;
   display: block;
+}
+
+.canvas_img {
+  background: -webkit-linear-gradient(top, #40A6FF, #fff); 
 }
 
 
@@ -60,7 +71,79 @@
   color: #fff;
   position: fixed;
   line-height: 1.5;
-  font-size: 14px;
-  padding: 2px 10px;
-  border-radius: 5px;
+  font-size: 30rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.mark_pael{
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  height: 90rpx;
+  padding: 10rpx 5rpx;
+  font-size: 16rpx;
+  z-index: 9999;
+  bottom: 0px;
+  background-color: #CAE6FF;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border-top: 1rpx solid #aaa;
+}
+
+.mark_pael input{
+  display: inline-block;
+  border: 1rpx solid #aaa;
+  margin: 0 10rpx;
+  padding: 0 10rpx;
+  height: 100%;
+  font-size: 34rpx;
+  background-color: #fff;
+  border-radius: 3rpx;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+.mark_pael button{
+  display: inline-block;
+  line-height: 70rpx;
+  min-width: 120rpx;
+  margin: 0 5rpx;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  padding: 0 5rpx;
+}
+
+
+.mark_pael picker{
+  display: inline-block;
+  width: 250rpx;
+  margin: 0 5rpx;
+  height: 100%;
+  font-size: 30rpx;
+  font-weight: 500;
+  line-height: 80rpx;
+  text-align: center;
+  background-image: url('picker_bk.png');
+  background-position: center;
+  box-sizing: border-box;
+  color: #0075DA
+}
+
+.mark_pael label{
+  display: inline-block;
+  width: 50rpx;
+  margin: 0 5rpx;
+  text-align: right;
+  color: linen
+}
+
+.mark_pael .btn_mark{
+  background-color: #5DC55D;
+}
+
+.mark_pael .btn_return{
+  background-color: #e64340;
 }
