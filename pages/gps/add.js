@@ -1,37 +1,11 @@
-// pages/gps/index.js
+// pages/gps/add.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    machines: [{
-      id: '18710886896',
-      title: 'heisir_mobile',
-      subtitle: '上海市青浦区徐泾镇乐天路208号附近',
-      electricity: '85%',
-      online: 1,
-      status: 'mac_online'
-    },
-      {
-        id: '18710886896',
-        title: 'heisir_mobile',
-        subtitle: '上海市青浦区徐泾镇乐天路208号附近',
-        electricity: '85%',
-        online: 1,
-        status: 'mac_offline'
-      },
-      {
-        id: '18710886896',
-        title: 'heisir_mobile',
-        subtitle: '上海市青浦区徐泾镇乐天路208号附近',
-        electricity: '85%',
-        online: 1,
-        status: 'mac_online'
-      }
-    ],
-    new_name: '',
-    new_sn: '',
+  
   },
 
   /**
@@ -89,9 +63,23 @@ Page({
   onShareAppMessage: function () {
   
   },
-  buttonadd:function(){
-    wx.navigateTo({
-      url: 'add'
+  scancode: function () {
+    var that = this
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: (res) => {
+        if (res.scanType == 'QR_CODE') {
+          that.setData({ new_sn: res.result })
+        }
+        else {
+          that.setData({ error: '请扫描正确的二维码' })
+        }
+      }
+    })
+  },
+  btnreturn:function(){
+    wx.navigateBack({
+      delta: 1
     })
   }
 })

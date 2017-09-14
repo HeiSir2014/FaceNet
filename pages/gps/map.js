@@ -1,37 +1,11 @@
-// pages/gps/index.js
+// pages/gps/map.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    machines: [{
-      id: '18710886896',
-      title: 'heisir_mobile',
-      subtitle: '上海市青浦区徐泾镇乐天路208号附近',
-      electricity: '85%',
-      online: 1,
-      status: 'mac_online'
-    },
-      {
-        id: '18710886896',
-        title: 'heisir_mobile',
-        subtitle: '上海市青浦区徐泾镇乐天路208号附近',
-        electricity: '85%',
-        online: 1,
-        status: 'mac_offline'
-      },
-      {
-        id: '18710886896',
-        title: 'heisir_mobile',
-        subtitle: '上海市青浦区徐泾镇乐天路208号附近',
-        electricity: '85%',
-        online: 1,
-        status: 'mac_online'
-      }
-    ],
-    new_name: '',
-    new_sn: '',
+  
   },
 
   /**
@@ -88,10 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  buttonadd:function(){
-    wx.navigateTo({
-      url: 'add'
-    })
   }
 })

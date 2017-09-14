@@ -1,12 +1,40 @@
 {
-  "pages":[
-    "pages/gps/index"
+  "pages": [
+    "pages/gps/index",
+    "pages/index/index",
+    "pages/gps/add",
+    "pages/gps/map"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#40A6FF",
     "navigationBarTitleText": "脸网",
-    "navigationBarTextStyle":"light",
-    "enablePullDownRefresh":true
+    "navigationBarTextStyle": "light",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/首页_填充.png",
+        "iconPath": "images/首页.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/地标_填充.png",
+        "iconPath": "images/地标.png",
+        "pagePath": "pages/gps/map",
+        "text": "定位"
+      },
+      {
+        "selectedIconPath": "images/用户_填充.png",
+        "iconPath": "images/用户.png",
+        "pagePath": "pages/gps/index",
+        "text": "我的"
+      }
+    ]
   }
 }

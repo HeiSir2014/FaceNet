@@ -10,15 +10,5 @@
       </view>
     </block>
   </view>
-  <button type='primary' class='button-add'>+</button>
-  <view class='mac_add'>
-    <label class="left">添加设备</label>
-    <input class='input_name' placeholder='请输入设备名称' value='{{new_name}}'></input>
-    <view class='sn_input'>
-      <input maxlength="12" placeholder='请输入设备序列号' value='{{new_sn}}'></input>
-      <button class="scan" bindtap='scancode'>[--]</button>
-    </view>
-    <button type='primary' class="submit">确定</button>
-    <button type='warn' class="return">返回</button>
-  </view>
+  <button type='primary' class='button-add' bindtap='buttonadd'>添加设备</button>
 </view>

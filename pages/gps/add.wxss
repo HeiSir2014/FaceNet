@@ -1,0 +1,62 @@
+/* pages/gps/add.wxss */
+.container{
+  align-items: center;
+  padding: 20rpx;
+  background-color: #fff;
+  padding-top:200rpx;
+}
+
+.mac_add{
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+
+}
+
+.mac_add button,.mac_add > input,.mac_add > view{
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-top:20rpx;
+  font-size: 9pt;
+}
+
+.mac_add .error{
+  width: 100%;
+  text-align: center;
+  color: red;
+  font-size: 8pt;
+}
+
+.sn_input{
+  position: relative;
+  width: 100%;
+  height:70rpx;
+  margin: 0;
+  border: 1px solid #b2b2b2;
+  border-radius: 10rpx;
+}
+
+.input_name{
+  border-radius: 10rpx;
+  padding:0 10rpx;
+  border: 1px solid #b2b2b2;
+  width: 100%;
+  height: 60rpx;
+  box-sizing:border-box;
+}
+.sn_input image{
+  position: absolute;
+  right: 5px;
+  width: 65rpx;
+  height: 55rpx;
+  margin:8rpx 0;
+  box-sizing:border-box;
+}
+
+.sn_input input{
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  padding:0 10rpx;
+  box-sizing:border-box;
+}

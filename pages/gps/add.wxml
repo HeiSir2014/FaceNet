@@ -1,0 +1,13 @@
+<view class="container">
+  <view class='mac_add'>
+    <label class="left">添加设备</label>
+    <input class='input_name' placeholder='请输入设备名称' value='{{new_name}}'></input>
+    <view class='sn_input'>
+      <input maxlength="12" placeholder='请输入设备序列号' value='{{new_sn}}'></input>
+      <image class="scan" bindtap='scancode' src="扫一扫.png"></image>
+    </view>
+    <span class="error">{{error}}</span>
+    <button type='primary' class="submit" bindtap='btnsubmit' >确定</button>
+    <button type='warn' class="return" bindtap='btnreturn'>返回</button>
+  </view>
+</view>

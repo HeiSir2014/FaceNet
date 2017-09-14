@@ -1,8 +1,8 @@
 /* pages/gps/index.wxss */
 .container{
-  background-color: #fff;
   align-items: left;
   padding: 20rpx;
+  background-color: #fff;
 }
 .mac_list{
   width: 100%;
@@ -54,61 +54,7 @@ map{
 
 
 .button-add {
-  width: 100rpx;
+  width: 80%;
   height: 80rpx;
   line-height: 80rpx;
-}
-
-.mac_add{
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-
-}
-
-.mac_add button,.mac_add > input,.mac_add > view{
-  height: 80rpx;
-  line-height: 80rpx;
-  margin-top:20rpx;
-}
-
-.sn_input{
-  position: relative;
-  width: 100%;
-  height: 80rpx;
-  margin: 0;
-  border: 1px solid #b2b2b2;
-  border-radius: 10rpx;
-}
-
-.input_name{
-  border-radius: 10rpx;
-  padding:0 10rpx;
-  border: 1px solid #b2b2b2;
-  width: 100%;
-  height: 80rpx;
-  box-sizing:border-box;
-}
-.sn_input button{
-  position: absolute;
-  right: 5px;
-  height: 60rpx;
-  line-height: 60rpx;
-  margin:10rpx 0;
-  padding: 0 10rpx;
-  box-sizing:border-box;
-  background-color: none;
-  font-weight: 100;
-  border: 0px;
-}
-.sn_input button::after{
-  content: ''
-}
-
-.sn_input input{
-  position: absolute;
-  width: 80%;
-  height: 100%;
-  padding:0 10rpx;
-  box-sizing:border-box;
 }
