@@ -1,0 +1,24 @@
+<view class="container">
+  <label class="left">设备列表</label>
+  <view class='mac_list'>
+    <block wx:key="machine" wx:for="{{machines}}">
+      <view class='mac_item'>
+        <image class="status" src="{{item.status}}.png"></image>
+        <text class="title" id="{{item.id}}" >{{item.title}}</text>
+        <text class="subtitle" id="{{item.id}}" >{{item.subtitle}}</text>
+        <text class="elec" id="{{item.id}}" >{{item.electricity}}</text>
+      </view>
+    </block>
+  </view>
+  <button type='primary' class='button-add'>+</button>
+  <view class='mac_add'>
+    <label class="left">添加设备</label>
+    <input class='input_name' placeholder='请输入设备名称' value='{{new_name}}'></input>
+    <view class='sn_input'>
+      <input maxlength="12" placeholder='请输入设备序列号' value='{{new_sn}}'></input>
+      <button class="scan" bindtap='scancode'>[--]</button>
+    </view>
+    <button type='primary' class="submit">确定</button>
+    <button type='warn' class="return">返回</button>
+  </view>
+</view>
