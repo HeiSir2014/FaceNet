@@ -1,2 +1,16 @@
 <!--pages/gps/map.wxml-->
-<map></map>
+<map id="map"
+            scale="{{scale}}"
+            longitude="{{lng}}"
+            latitude="{{lat}}"
+            controls="{{controls}}"
+            include-points="{{showIncludePoints}}"
+            markers="{{markers}}"
+            polyline="{{polyline}}"
+            bindmarkertap="markertap"
+            bindcontroltap="controltap"
+            bindregionchange="regionchange"
+            bindtap="maptap"
+            show-location
+            class="f1">
+</map>

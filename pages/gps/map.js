@@ -12,7 +12,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.setNavigationBarTitle({
+      title: '轨迹'
+    });
+    var that = this;
+    wx.getLocation({ success:function(res){
+      that.setData({ lng: res.longitude, lat: res.latitude, scale: 16});
+    }});
   },
 
   /**

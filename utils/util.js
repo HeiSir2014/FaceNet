@@ -120,8 +120,88 @@ function Base64() {
     }  
 }
 
+function getAllMachines(wx_code,callback){
+  wx.request( 
+    {
+      url:'https://heisir.cn/amap/gps/action.php',
+      method:'POST',
+      data: 'action=get_all_machines&code='+wx_code,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType:'json',
+      success:function(res){
+        if(res.data != null){
+          var rJson = res.data;
+            if (rJson != null && rJson.code == 0 && callback != null){
+              callback(rJson.data);
+            }
+            else{
+              var log = '查询失败';
+              if (res != null && typeof res.msg == 'string'){
+                log += res.msg;
+              }
+              callback(null, log);
+            }
+        }
+      },
+      fail:function(){
+        callback(null, '请求失败');
+      }
+    }
+  )
+}
+
+function regMachine(wx_code,name,mac_id,mac_type,callback) {
+  wx.request(
+    {
+      url: 'https://heisir.cn/amap/gps/action.php',
+      method: 'POST',
+      data: 'action=reg_machine&code=' + wx_code + '&name=' + name + '&mac_id=' + mac_id + '&mac_type=' + mac_type,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      success: function (res) {
+        if (res.data != null) {
+          var rJson = res.data;
+          if (rJson != null && rJson.code == 0 && callback != null) {
+            callback(rJson.msg);
+          }
+          else {
+            var log = '注册失败';
+            if (res != null && typeof res.msg == 'string') {
+              log += res.msg;
+            }
+            callback(null, log);
+          }
+        }
+      },
+      fail: function () {
+        callback(null, '请求失败');
+      }
+    }
+  )
+}
+
+function getStatusImg(obj){
+  var map = {
+    '电动车': '1',
+    '儿童': '2',
+    '宠物': '3',
+    '公交车': '4',
+    '家人': '5',
+    '老人': '6',
+    '其他': '7',
+    '汽车': '8'
+  };
+  return '/images/'+ map[obj.mactype] + '_' + (obj.online == 0?'offline':'online') + '.png';
+}
 
 module.exports = {
   formatTime: formatTime,
-  Base64:Base64
+  Base64:Base64,
+  getAllMachines: getAllMachines,
+  regMachine: regMachine,
+  getStatusImg: getStatusImg
 }

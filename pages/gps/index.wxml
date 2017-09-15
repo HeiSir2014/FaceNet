@@ -1,14 +1,14 @@
 <view class="container">
-  <label class="left">设备列表</label>
   <view class='mac_list'>
     <block wx:key="machine" wx:for="{{machines}}">
       <view class='mac_item'>
-        <image class="status" src="{{item.status}}.png"></image>
-        <text class="title" id="{{item.id}}" >{{item.title}}</text>
-        <text class="subtitle" id="{{item.id}}" >{{item.subtitle}}</text>
-        <text class="elec" id="{{item.id}}" >{{item.electricity}}</text>
+        <image class="status" src="{{item.status}}"></image>
+        <text class="title">{{item.name}}</text>
+        <text class="subtitle">{{item.location}}</text>
+        <text class="elec">{{item.elec}}%</text>
       </view>
     </block>
+    <label class="nomac" style='display:{{no_machine_style}}'>您当前没有绑定的设备，请先添加设备。</label>
   </view>
-  <button type='primary' class='button-add' bindtap='buttonadd'>添加设备</button>
 </view>
+<button type='primary' class='button-add' bindtap='buttonadd'>添加设备</button>

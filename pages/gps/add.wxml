@@ -1,10 +1,17 @@
 <view class="container">
   <view class='mac_add'>
-    <label class="left">添加设备</label>
-    <input class='input_name' placeholder='请输入设备名称' value='{{new_name}}'></input>
+    <input class='input_name' placeholder='请输入设备名称' bindinput='name_input' value='{{new_name}}'></input>
     <view class='sn_input'>
-      <input maxlength="12" placeholder='请输入设备序列号' value='{{new_sn}}'></input>
-      <image class="scan" bindtap='scancode' src="扫一扫.png"></image>
+      <input maxlength="12" placeholder='请输入设备序列号' bindinput='id_input' value='{{new_sn}}'></input>
+      <image class="scan" bindtap='scancode' src="/images/scan.png"></image>
+    </view>
+    <view class='type_input'>
+      类型：
+      <picker class="picker" bindchange="bindPickerChange" value="{{mac_types_index}}" range="{{mac_types}}" range-key="name" mode="selector">
+        <view class="picker">
+          {{mac_types[mac_types_index].name}}
+        </view>
+      </picker>
     </view>
     <span class="error">{{error}}</span>
     <button type='primary' class="submit" bindtap='btnsubmit' >确定</button>
