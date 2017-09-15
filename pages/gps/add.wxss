@@ -1,10 +1,11 @@
 /* pages/gps/add.wxss */
 .container{
+  display: block;
   align-items: center;
   padding: 20rpx;
   background-color: #fff;
-  padding-top:200rpx;
-  flex-direction:column-reverse;
+  padding-top:50%;
+  flex-direction: column;
   height: 100%;
 }
 
