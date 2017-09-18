@@ -1,20 +1,61 @@
 /* pages/gps/index.wxss */
-.container{
-  align-items: left;
-  padding: 20rpx;
+page{
   background-color: #fff;
+}
+
+.container{
+  align-items: center;
   position: relative;
   box-sizing:border-box;
-  height:100%;
+  height: 100%;
 }
+
+.person{
+  width: 100%;
+  display:block;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #40A6FF;
+  color: #fff;
+  box-sizing:border-box;
+  padding: 40rpx;
+}
+
+.person .pichead{
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.person .nick{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
 .mac_list{
   width: 100%;
   margin: 0;
-  position: relative;
-  height:90%;
-  margin-bottom: 100rpx;
+  position: absolute;
   box-sizing:border-box;
+  top: 250rpx;
+  bottom: 160rpx;
+  padding: 20rpx;
+  text-align: center;
 }
+
+.mac_list .nomac{
+  display: block;
+  width: 100%;
+  border: 1px solid #ff8800;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  color: white;
+  background-color: #ff8800;
+}
+
 .mac_item {
   width: 100%;
   position: relative;
@@ -25,6 +66,7 @@
 
 .mac_item .status{
   position: absolute;
+  left:0rpx;
   top:20%;
   width: 70rpx;
   height: 64rpx;
@@ -74,11 +116,21 @@ map{
 
 .button-add {
   position: fixed;
-  width: 90%;
-  height: 80rpx;
-  line-height: 80rpx;
+  width: calc(100% - 40rpx);
+  height: 90rpx;
+  line-height: 90rpx;
   bottom: 10rpx;
   box-sizing:border-box;
-  margin: 0 auto;
-  left: 5%;
+  border-radius: 10rpx;
+  font-size: 12pt;
+  
+}
+
+.tip{
+  position: fixed;
+  bottom: 120rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 10pt;
+  color: gray;
 }

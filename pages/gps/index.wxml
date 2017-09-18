@@ -1,5 +1,9 @@
 <view class="container">
-  <view class='mac_list'>
+  <view class='person'>
+    <image class="pichead" src="{{userInfo.avatarUrl}}"></image>
+    <label calss="nick">{{userInfo.nickName}}</label>
+  </view>
+  <view class='mac_list' style='height:{{list_height}}px;'>
     <block wx:key="machine" wx:for="{{machines}}">
       <view id="{{item.macid}}" class='mac_item' bindtap='openMacDetail' bindlongtap='rightMachine'>
         <image class="status" src="{{item.status}}"></image>
@@ -9,7 +13,8 @@
         <text class="time">{{item.lasttime}}</text>
       </view>
     </block>
-    <label class="nomac" style='display:{{no_machine_style}}'>您当前没有绑定的设备，请先添加设备。</label>
+    <label class="nomac" style='display:{{no_machine_style}}'>当前设备列表为空</label>
   </view>
+  <label class='tip'>下拉刷新设备的最新信息</label>
+  <button type='primary' class='button-add' bindtap='buttonadd'>添加设备</button>
 </view>
-<button type='primary' class='button-add' bindtap='buttonadd'>添加设备</button>

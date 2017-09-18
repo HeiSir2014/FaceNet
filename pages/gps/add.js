@@ -138,5 +138,8 @@ Page({
     if (this.data.new_name != '' && this.data.new_sn != '') {
       this.setData({ bIsDisableSubmit: false })
     }
+  },
+  btnbuyer:function(e){
+    
   }
 })

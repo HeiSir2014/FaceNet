@@ -8,22 +8,25 @@ Page({
    */
   data: {
     machines: [],
-    no_machine_style:'none'
+    no_machine_style:'none',
+    userInfo: { nick:'' ,avatarUrl:'/images/default-header.png'}
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this
+    var sysInfo = wx.getSystemInfoSync()
+    //that.setData({ list_height: sysInfo.windowHeight-60}) 
     wx.setNavigationBarTitle({
       title: '所有设备'
     });
     //调用应用实例的方法获取全局数据
       app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+        //更新数据
+        that.setData({
+          userInfo: userInfo
+        })
       if (app.globalData.wx_code == null || app.globalData.wx_code == '')
       {
         wx.login({
