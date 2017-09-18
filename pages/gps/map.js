@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
   },
 
   /**
@@ -16,8 +15,18 @@ Page({
       title: '轨迹'
     });
     var that = this;
-    wx.getLocation({ success:function(res){
-      that.setData({ lng: res.longitude, lat: res.latitude, scale: 16});
+    var map_loc = wx.getStorageInfoSync('map_loc');
+    if(map_loc){
+      that.setData(map_loc);
+    }
+    wx.getLocation({
+      type:'gcj02',success:function(res){
+        var d = { lng: res.longitude, lat: res.latitude, scale: 16 }
+        try {
+          wx.setStorageSync('map_loc', d)
+        } catch (e) {
+        }
+        that.setData(d);
     }});
   },
 

@@ -24,7 +24,7 @@ Page({
       that.setData({
         userInfo: userInfo
       })
-      if (app.globalData.wx_code == '')
+      if (app.globalData.wx_code == null || app.globalData.wx_code == '')
       {
         wx.login({
           success: function (res) {
@@ -35,10 +35,15 @@ Page({
                 success:function(res){
                   if(res.data.code == 0){
                     app.globalData.wx_code = res.data.uid;
+                    try {
+                      wx.setStorageSync('code', app.globalData.wx_code)
+                    } catch (e) {
+                    }
                     wx.startPullDownRefresh();
+                    wx.showLoading({ title: '正在加载数据', mask:true})
                     common.getAllMachines(app.globalData.wx_code, function (data, error) {
                       if (data.length == 0) {
-                        that.setData({ no_machine_style: '' })
+                        that.setData({ machines: [],no_machine_style: '' })
                       }
                       else {
                         for(var key in data){
@@ -49,8 +54,15 @@ Page({
                             }
                           }
                         }
-                        that.setData({ machines: data, no_machine_style: 'none' })
+                        that.setData({ machines: data, no_machine_style: 'none' });
                       }
+
+                      try {
+                        wx.setStorageSync('machines', data)
+                      } catch (e) {
+                      }
+                      wx.stopPullDownRefresh();
+                      wx.hideLoading();
                     })
                   }
                 }
@@ -62,10 +74,25 @@ Page({
         });
       }
       else{
+        try {
+          var datas = wx.getStorageSync('machines')
+          if(datas){
+            if (datas.length == 0) {
+              that.setData({ machines: [], no_machine_style: '' })
+            }
+            else{
+              that.setData({ machines: datas, no_machine_style: 'none' })
+            }
+            return;
+          }
+        } catch (e) {
+        }
+
         wx.startPullDownRefresh();
+        wx.showLoading({ title: '正在加载数据', mask: true })
         common.getAllMachines(app.globalData.wx_code, function (data, error) {
           if (data.length == 0) {
-            that.setData({ no_machine_style: '' })
+            that.setData({ machines:[],no_machine_style: '' })
           }
           else {
             for (var key in data) {
@@ -76,13 +103,33 @@ Page({
                 }
               }
             }
-            that.setData({ machines: data, no_machine_style: 'none' })
+            that.setData({ machines: data, no_machine_style: 'none' });
           }
+
+          try {
+            wx.setStorageSync('machines', data)
+          } catch (e) {
+          }
+          wx.stopPullDownRefresh();
+          wx.hideLoading();
         })
       }
     });
   },
-
+  openMacDetail:function(e){
+    var data = this.data.machines;
+    for (var key in data) {
+      if (typeof data[key] == 'object') {
+        if (data[key].macid == e.currentTarget.id ){
+          app.globalData.machine = data[key];
+          wx.navigateTo({
+            url: 'detail?id=' + e.currentTarget.id,
+          })
+          break;
+        }
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -116,9 +163,10 @@ Page({
    */
   onPullDownRefresh: function () {
     var that = this;
+    wx.showLoading({ title: '正在加载数据', mask: true })
     common.getAllMachines(app.globalData.wx_code, function (data, error) {
       if (data.length == 0) {
-        that.setData({ no_machine_style: '' })
+        that.setData({ machines: [],no_machine_style: '' })
       }
       else {
         for (var key in data) {
@@ -129,9 +177,15 @@ Page({
             }
           }
         }
-        that.setData({ machines: data, no_machine_style: 'none' })
+        that.setData({ machines: data, no_machine_style: 'none' });
+      }
+
+      try {
+        wx.setStorageSync('machines', data)
+      } catch (e) {
       }
       wx.stopPullDownRefresh();
+      wx.hideLoading();
     })
   },
 
@@ -151,6 +205,29 @@ Page({
   buttonadd:function(){
     wx.navigateTo({
       url: 'add'
+    })
+  },
+  rightMachine:function(e){
+    wx.showActionSheet({
+      itemList: ['查看轨迹','实时追踪','实时模式','省电模式'],
+      success:function(tapIndex){
+        switch (tapIndex) {
+          case 0:
+            wx.switchTab({
+              url: '/pages/gps/map?id=' + '',
+            });
+            break;
+          case 1:
+            wx.switchTab({
+              url: '/pages/gps/map?id=' + '',
+            });
+            break;
+          case 2:
+            break;
+          case 3:
+            break;
+        }
+      }
     })
   }
 })

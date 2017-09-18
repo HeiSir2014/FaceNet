@@ -184,6 +184,37 @@ function regMachine(wx_code,name,mac_id,mac_type,callback) {
   )
 }
 
+function deleteMachine(wx_code,mac_id,callback) {
+  wx.request(
+    {
+      url: 'https://heisir.cn/amap/gps/action.php',
+      method: 'POST',
+      data: 'action=del_machine&code=' + wx_code + '&mac_id=' + mac_id,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      success: function (res) {
+        if (res.data != null) {
+          var rJson = res.data;
+          if (rJson != null && rJson.code == 0 && callback != null) {
+            callback(rJson.msg);
+          }
+          else {
+            var log = '注册失败';
+            if (res != null && typeof res.msg == 'string') {
+              log += res.msg;
+            }
+            callback(null, log);
+          }
+        }
+      },
+      fail: function () {
+        callback(null, '请求失败');
+      }
+    }
+  )
+}
 function getStatusImg(obj){
   var map = {
     '电动车': '1',
@@ -195,7 +226,7 @@ function getStatusImg(obj){
     '其他': '7',
     '汽车': '8'
   };
-  return '/images/'+ map[obj.mactype] + '_' + (obj.online == 0?'offline':'online') + '.png';
+  return '/images/'+ map[obj.mactype] + '_' + (obj.online == 0 ?'offline':'online') + '.png';
 }
 
 module.exports = {
@@ -203,5 +234,6 @@ module.exports = {
   Base64:Base64,
   getAllMachines: getAllMachines,
   regMachine: regMachine,
-  getStatusImg: getStatusImg
+  getStatusImg: getStatusImg,
+  deleteMachine: deleteMachine
 }

@@ -3,7 +3,8 @@
     "pages/gps/index",
     "pages/index/index",
     "pages/gps/add",
-    "pages/gps/map"
+    "pages/gps/map",
+    "pages/gps/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

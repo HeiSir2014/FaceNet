@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    bIsDisableSubmit:true,
     mac_types: [{
       name: '汽车'
       }, {
@@ -24,9 +25,9 @@ Page({
       }, {
         name: '其他'
       }],
-    mac_types_index:0,
-    new_name:'',
-    new_sn:''
+    mac_types_index:1,
+    new_name:'电驴',
+    new_sn:'0011613000FF'
   },
 
   /**
@@ -36,6 +37,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '新增设备'
     });
+    if (this.data.new_name != '' && this.data.new_sn != '') {
+      this.setData({ bIsDisableSubmit: false })
+    }
   },
   bindPickerChange: function (e) {
     this.setData({
@@ -124,9 +128,15 @@ Page({
     })
   },
   name_input: function (e) {
-    this.setData({ new_name:e.detail.value})
+    this.setData({ new_name: e.detail.value })
+    if (this.data.new_name != '' && this.data.new_sn != ''){
+      this.setData({ bIsDisableSubmit: false })
+    }
   },
   id_input: function (e) {
     this.setData({ new_sn: e.detail.value })
+    if (this.data.new_name != '' && this.data.new_sn != '') {
+      this.setData({ bIsDisableSubmit: false })
+    }
   }
 })

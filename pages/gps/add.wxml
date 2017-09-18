@@ -2,7 +2,7 @@
   <view class='mac_add'>
     <input class='input_name' placeholder='请输入设备名称' bindinput='name_input' value='{{new_name}}'></input>
     <view class='sn_input'>
-      <input maxlength="12" placeholder='请输入设备序列号' bindinput='id_input' value='{{new_sn}}'></input>
+      <input placeholder='请输入设备序列号' bindinput='id_input' value='{{new_sn}}'></input>
       <image class="scan" bindtap='scancode' src="/images/scan.png"></image>
     </view>
     <view class='type_input'>
@@ -14,7 +14,7 @@
       </picker>
     </view>
     <span class="error">{{error}}</span>
-    <button type='primary' class="submit" bindtap='btnsubmit' >确定</button>
+    <button type='primary' class="submit" bindtap='btnsubmit' disabled='{{bIsDisableSubmit}}'>确定</button>
     <button type='warn' class="return" bindtap='btnreturn'>返回</button>
   </view>
 </view>

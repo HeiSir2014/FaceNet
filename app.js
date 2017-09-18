@@ -5,6 +5,9 @@ App({
     //var logs = wx.getStorageSync('logs') || []
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
+
+    var that = this
+    that.globalData.wx_code = wx.getStorageSync('code');
   },
 
   getUserInfo: function(cb) {
@@ -25,6 +28,7 @@ App({
 
   globalData: {
     userInfo: null,
-    wx_code:''
+    wx_code:null,
+    machine:null
   }
 })

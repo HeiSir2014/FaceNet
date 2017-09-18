@@ -53,6 +53,18 @@
 .mac_item .elec{
   position: absolute;
   right: 10rpx;
+  top:0rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #3FA5FF;
+}
+.mac_item .time{
+  position: absolute;
+  right: 10rpx;
+  top:60rpx;
+  line-height: 60rpx;
+  font-size: 25rpx;
+  color: #00B266;
 }
 
 map{

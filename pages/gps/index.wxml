@@ -1,11 +1,12 @@
 <view class="container">
   <view class='mac_list'>
     <block wx:key="machine" wx:for="{{machines}}">
-      <view class='mac_item'>
+      <view id="{{item.macid}}" class='mac_item' bindtap='openMacDetail' bindlongtap='rightMachine'>
         <image class="status" src="{{item.status}}"></image>
         <text class="title">{{item.name}}</text>
         <text class="subtitle">{{item.location}}</text>
-        <text class="elec">{{item.elec}}%</text>
+        <text class="elec">电量：{{item.elec}}%</text>
+        <text class="time">{{item.lasttime}}</text>
       </view>
     </block>
     <label class="nomac" style='display:{{no_machine_style}}'>您当前没有绑定的设备，请先添加设备。</label>

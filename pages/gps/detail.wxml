@@ -1,0 +1,5 @@
+<!--pages/gps/detail.wxml-->
+<view class="container">
+  <map class="loc" latitude='{{machine.lat}}' longitude='{{machine.lng}}' scale='16' markers='{{makers}}' show-location bindmarkertap='markertap' bindcallouttap='markertap' include-points='{{includePoints}}'></map>
+  <button class="delete_mac" type='warn' bindtap='del_machine'>删除</button>
+</view>
