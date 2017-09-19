@@ -1,4 +1,7 @@
 /* pages/gps/add.wxss */
+page{
+  background-color: #40A6FF;
+}
 .container{
   display: block;
   align-items: center;
@@ -18,8 +21,7 @@
   position: relative;
   width: 80%;
   margin: 0 auto;
-  padding-bottom: 50rpx;
-
+  padding: 50rpx;
 }
 
 .mac_add .title{
@@ -53,10 +55,10 @@
 }
 
 .buyer_input{
+  align-items: center;
   text-align: center;
-  background-color: #ff5902;
-  color: #fff;
-  border: 1px solid #ff5902;
+  color: #ff5902;
+  border: 0px solid #ff5902;
 }
 
 .input_name{
@@ -68,9 +70,17 @@
   padding: 0 20rpx;
 }
 
-.sn_input image,.buyer_input image{
+.sn_input image{
   position: absolute;
   right: 5px;
+  width: 60rpx;
+  height: 55rpx;
+  margin:12rpx 0;
+  box-sizing:border-box;
+}
+
+.buyer_input image{
+  display: inline-block;
   width: 60rpx;
   height: 55rpx;
   margin:12rpx 0;

@@ -1,9 +1,3 @@
 {
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#40A6FF",
-    "navigationBarTitleText": "伴伴",
-    "navigationBarTextStyle": "light",
-    "enablePullDownRefresh": true
-  }
+    "backgroundColor":"40A6FF"
 }

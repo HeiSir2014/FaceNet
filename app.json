@@ -7,16 +7,18 @@
     "pages/gps/detail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#40A6FF",
     "navigationBarTitleText": "脸网",
     "navigationBarTextStyle": "light",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "backgroundColor": "40A6FF"
   },
   "tabBar": {
     "color": "#a9b7b7",
     "selectedColor": "#11cd6e",
     "borderStyle": "white",
+    "backgroundColor":"#F7F7FA",
     "list": [
       {
         "selectedIconPath": "images/首页_填充.png",

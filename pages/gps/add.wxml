@@ -1,5 +1,7 @@
 <view class="container">
-  <view class="showtip"></view>
+  <view class="showtip">
+    <label></label>
+  </view>
   <view class='mac_add'>
     <input class='input_name' placeholder='请输入设备名称' bindinput='name_input' value='{{new_name}}'></input>
     <view class='sn_input'>
@@ -18,6 +20,6 @@
     <button type='primary' class="submit" bindtap='btnsubmit' disabled='{{bIsDisableSubmit}}'>确定</button>
     <button type='warn' class="return" bindtap='btnreturn'>返回</button>
 
-    <view class='buyer_input' bindtap='btnbuyer'>没有设备，我要购买<image class="scan" src="/images/buyer.png"></image></view>
+    <view class='buyer_input' bindtap='btnbuyer'><label></label><image class="scan" src="/images/buyer.png"></image></view>
   </view>
 </view>
