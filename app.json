@@ -7,17 +7,16 @@
     "pages/gps/detail"
   ],
   "window": {
-    "backgroundTextStyle": "dark",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#40A6FF",
     "navigationBarTitleText": "脸网",
     "navigationBarTextStyle": "light",
-    "enablePullDownRefresh": true,
-    "backgroundColor": "40A6FF"
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#a9b7b7",
     "selectedColor": "#11cd6e",
-    "borderStyle": "white",
+    "borderStyle": "#F7F7FA",
     "backgroundColor":"#F7F7FA",
     "list": [
       {
@@ -33,10 +32,16 @@
         "text": "定位"
       },
       {
+        "selectedIconPath": "images/轨迹_填充.png",
+        "iconPath": "images/轨迹.png",
+        "pagePath": "pages/gps/map",
+        "text": "轨迹"
+      },
+      {
         "selectedIconPath": "images/用户_填充.png",
         "iconPath": "images/用户.png",
         "pagePath": "pages/gps/index",
-        "text": "我的"
+        "text": "我"
       }
     ]
   }

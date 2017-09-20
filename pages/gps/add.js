@@ -34,9 +34,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '新增设备'
-    });
     if (this.data.new_name != '' && this.data.new_sn != '') {
       this.setData({ bIsDisableSubmit: false })
     }
@@ -118,7 +115,7 @@ Page({
           })
         }
         else {
-          that.setData({ error: '注册失败，请稍后重试。' })
+          that.setData({ error: error })
         }
     })
   },
@@ -140,6 +137,5 @@ Page({
     }
   },
   btnbuyer:function(e){
-    
   }
 })

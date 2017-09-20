@@ -1,6 +1,7 @@
 <view class="container">
   <view class="showtip">
-    <label></label>
+    <image src='/images/add_device.png' style='width:160rpx;height:160rpx;'></image>
+    <label>添加任意支持的设备</label>
   </view>
   <view class='mac_add'>
     <input class='input_name' placeholder='请输入设备名称' bindinput='name_input' value='{{new_name}}'></input>

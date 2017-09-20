@@ -3,18 +3,23 @@
     <image class="pichead" src="{{userInfo.avatarUrl}}"></image>
     <label calss="nick">{{userInfo.nickName}}</label>
   </view>
-  <view class='mac_list' style='height:{{list_height}}px;'>
+  <view class='mac_list'>
     <block wx:key="machine" wx:for="{{machines}}">
-      <view id="{{item.macid}}" class='mac_item' bindtap='openMacDetail' bindlongtap='rightMachine'>
-        <image class="status" src="{{item.status}}"></image>
+      <view class='mac_item'>
+        <image class="icon" src="{{item.status}}"></image>
         <text class="title">{{item.name}}</text>
-        <text class="subtitle">{{item.location}}</text>
-        <text class="elec">电量：{{item.elec}}%</text>
-        <text class="time">{{item.lasttime}}</text>
+        <image id="{{item.macid}}" class="control" src="/images/control.png" bindtap='controlMachine' ></image>
+        <text class="time"><text class="leftList">时间：</text>{{item.lasttime}}</text>
+        <text class="elec"><text class="leftList">电量：</text>{{item.elec}}%</text>
+        <text class="loctype"><text class="leftList">定位：</text>{{item.type == 'gps'?'GPS+北斗双星定位':'GSM基站定位'}}</text>
+        <text class="speed"><text class="leftList">时速：</text>{{item.speed}}Km/h</text>
+        <text id="{{item.macid}}" class="location" bindtap='openMacDetail'>
+          <text class="leftList">位置：</text>{{item.location}}
+        </text>
+        <image id="{{item.macid}}" class="btnLoc" src="/images/loc.png" bindtap='openMacDetail' ></image>
       </view>
     </block>
-    <label class="nomac" style='display:{{no_machine_style}}'>当前设备列表为空</label>
+    <label class='tip'>下拉刷新设备的最新信息</label>
+    <button type='primary' class='button-add' bindtap='buttonadd'>添加设备</button>
   </view>
-  <label class='tip'>下拉刷新设备的最新信息</label>
-  <button type='primary' class='button-add' bindtap='buttonadd'>添加设备</button>
 </view>

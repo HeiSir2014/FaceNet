@@ -169,9 +169,9 @@ function regMachine(wx_code,name,mac_id,mac_type,callback) {
             callback(rJson.msg);
           }
           else {
-            var log = '注册失败';
-            if (res != null && typeof res.msg == 'string') {
-              log += res.msg;
+            var log = '';
+            if (rJson != null && typeof rJson.msg == 'string') {
+              log += rJson.msg;
             }
             callback(null, log);
           }
@@ -201,9 +201,9 @@ function deleteMachine(wx_code,mac_id,callback) {
             callback(rJson.msg);
           }
           else {
-            var log = '注册失败';
-            if (res != null && typeof res.msg == 'string') {
-              log += res.msg;
+            var log = '';
+            if (rJson != null && typeof rJson.msg == 'string') {
+              log += rJson.msg;
             }
             callback(null, log);
           }

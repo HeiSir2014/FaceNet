@@ -18,9 +18,9 @@ Page({
     var that = this
     var sysInfo = wx.getSystemInfoSync()
     //that.setData({ list_height: sysInfo.windowHeight-60}) 
-    wx.setNavigationBarTitle({
-      title: '所有设备'
-    });
+   //wx.setNavigationBarTitle({
+   //   title: '所有设备'
+   //});
     //调用应用实例的方法获取全局数据
       app.getUserInfo(function (userInfo) {
         //更新数据
@@ -123,11 +123,15 @@ Page({
     var data = this.data.machines;
     for (var key in data) {
       if (typeof data[key] == 'object') {
+        
         if (data[key].macid == e.currentTarget.id ){
-          app.globalData.machine = data[key];
-          wx.navigateTo({
-            url: 'detail?id=' + e.currentTarget.id,
-          })
+          var item = data[key];
+          if (item.lat != -1 && item.lng != -1) {
+            app.globalData.machine = item;
+            wx.navigateTo({
+              url: 'detail?id=' + e.currentTarget.id,
+            })
+          }
           break;
         }
       }
@@ -232,5 +236,8 @@ Page({
         }
       }
     })
+  },
+  controlMachine:function(e){
+
   }
 })

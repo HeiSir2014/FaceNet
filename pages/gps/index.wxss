@@ -12,7 +12,8 @@ page{
   position: relative;
   box-sizing:border-box;
   height: 100%;
-  background-color: #fff;
+  background-color: #efefef;
+  overflow-y: auto;
 }
 
 .person{
@@ -46,79 +47,122 @@ page{
   position: absolute;
   box-sizing:border-box;
   top: 250rpx;
-  bottom: 160rpx;
   text-align: center;
   padding-top:10rpx;
+  padding-bottom:20rpx;
 }
 
 .mac_list .nomac{
   display: block;
-  width: 100%;
-  border: 1px solid #ff8800;
-  padding: 20rpx;
+  width: calc(100% - 40rpx);
   border-radius: 10rpx;
   box-sizing: border-box;
   color: white;
   background-color: #ff8800;
+  padding: 20rpx 0;
+  position: absolute;
+  left:20rpx;
 }
 
 .mac_item {
-  width: 100%;
   position: relative;
-  border-bottom: 1px solid #e7e7e7;
-  height: 120rpx;
-  line-height: 120rpx;
-  padding: 20rpx;
+  height: 270rpx;
+  line-height: 270rpx;
   box-sizing: border-box;
+  margin: 20rpx;
+  background-color: #fff;
+  color: #000;
 }
 
-.mac_item:active{
-  background-color: #e6e6e6;
+.mac_item text{
+  color: #40A6FF;
 }
 
-.mac_item .status{
+.mac_item .icon{
   position: absolute;
   left:20rpx;
-  top:20%;
+  top:20rpx;
   width: 70rpx;
-  height: 64rpx;
+  height: 60rpx;
+  line-height: 60rpx;
 }
 
+.mac_item .control{
+  position: absolute;
+  right:20rpx;
+  top:20rpx;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.mac_item .leftList{
+  color: #000;
+}
 .mac_item .title{
   position: absolute;
-  top:0rpx;
+  top:  20rpx;
   left: 100rpx;
+  height: 60rpx;
   line-height: 60rpx;
-  font-weight: 500;
+  font-size: 16pt;
+  text-align: left;
+  color: #000;
 }
-.mac_item .subtitle{
+.mac_item .time{
   position: absolute;
-  left: 100rpx;
-  top:60rpx;
-  line-height: 60rpx;
+  left: 20rpx;
+  top:100rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   font-size: 30rpx;
-  max-width: 50%;
-  color: #999999;
+}
+
+.mac_item .location{
+  position: absolute;
+  left: 20rpx;
+  top:200rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
   word-break:keep-all;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+  text-align: left;
+}
+
+.mac_item .loctype{
+  position: absolute;
+  left: 20rpx;
+  top:150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+}
+
+.mac_item .speed{
+  position: absolute;
+  left: 70%;
+  top:150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
 }
 .mac_item .elec{
   position: absolute;
-  right: 10rpx;
-  top:0rpx;
-  line-height: 60rpx;
+  left: 70%;
+  top:100rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   font-size: 30rpx;
-  color: #3FA5FF;
 }
-.mac_item .time{
+.mac_item .btnLoc{
   position: absolute;
-  right: 10rpx;
-  top:60rpx;
-  line-height: 60rpx;
-  font-size: 25rpx;
-  color: #00B266;
+  right: 20rpx;
+  top:200rpx;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
 }
 
 map{
@@ -127,11 +171,9 @@ map{
 
 
 .button-add {
-  position: fixed;
   width: calc(100% - 40rpx);
   height: 90rpx;
   line-height: 90rpx;
-  bottom: 10rpx;
   box-sizing:border-box;
   border-radius: 10rpx;
   font-size: 12pt;
@@ -139,10 +181,10 @@ map{
 }
 
 .tip{
-  position: fixed;
-  bottom: 120rpx;
-  height: 30rpx;
-  line-height: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   font-size: 10pt;
-  color: gray;
+  color: #687A9F;
+  padding: 20rpx 0;
+  box-sizing:border-box;
 }
