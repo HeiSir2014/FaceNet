@@ -121,6 +121,7 @@ page{
   position: absolute;
   left: 20rpx;
   top:200rpx;
+  max-width: 85%;
   height: 50rpx;
   line-height: 50rpx;
   font-size: 30rpx;
