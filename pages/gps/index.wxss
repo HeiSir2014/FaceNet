@@ -143,7 +143,7 @@ page{
 
 .mac_item .speed{
   position: absolute;
-  left: 70%;
+  left: 65%;
   top:150rpx;
   height: 50rpx;
   line-height: 50rpx;
@@ -151,7 +151,7 @@ page{
 }
 .mac_item .elec{
   position: absolute;
-  left: 70%;
+  left: 65%;
   top:100rpx;
   height: 50rpx;
   line-height: 50rpx;
