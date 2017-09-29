@@ -215,6 +215,39 @@ function deleteMachine(wx_code,mac_id,callback) {
     }
   )
 }
+
+function GetGPSByDate(mac_id,date, callback) {
+  wx.request(
+    {
+      url: 'https://heisir.cn/amap/gps/action.php',
+      method: 'POST',
+      data: 'action=GetGPSByDate&mac_id=' + mac_id + '&date=' + date,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      success: function (res) {
+        if (res.data != null) {
+          var rJson = res.data;
+          if (rJson != null && rJson.code == 0 && callback != null) {
+            callback(rJson.data,rJson.msg);
+          }
+          else {
+            var log = '';
+            if (rJson != null && typeof rJson.msg == 'string') {
+              log += rJson.msg;
+            }
+            callback(null, log);
+          }
+        }
+      },
+      fail: function () {
+        callback(null, '请求失败');
+      }
+    }
+  )
+}
+
 function getStatusImg(obj){
   var map = {
     '电动车': '1',
@@ -235,5 +268,6 @@ module.exports = {
   getAllMachines: getAllMachines,
   regMachine: regMachine,
   getStatusImg: getStatusImg,
-  deleteMachine: deleteMachine
+  deleteMachine: deleteMachine,
+  GetGPSByDate: GetGPSByDate
 }

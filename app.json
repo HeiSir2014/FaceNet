@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/gps/add",
     "pages/gps/map",
-    "pages/gps/detail"
+    "pages/gps/detail",
+    "pages/gps/path"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,7 +18,7 @@
     "color": "#a9b7b7",
     "selectedColor": "#11cd6e",
     "borderStyle": "#F7F7FA",
-    "backgroundColor":"#F7F7FA",
+    "backgroundColor": "#F7F7FA",
     "list": [
       {
         "selectedIconPath": "images/首页_填充.png",
@@ -26,15 +27,9 @@
         "text": "首页"
       },
       {
-        "selectedIconPath": "images/地标_填充.png",
-        "iconPath": "images/地标.png",
-        "pagePath": "pages/gps/map",
-        "text": "定位"
-      },
-      {
         "selectedIconPath": "images/轨迹_填充.png",
         "iconPath": "images/轨迹.png",
-        "pagePath": "pages/gps/map",
+        "pagePath": "pages/gps/path",
         "text": "轨迹"
       },
       {

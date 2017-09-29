@@ -1,0 +1,14 @@
+<!--pages/gps/detail.wxml-->
+<view class="container">
+  <map class="loc" polyline='{{allploylines}}' markers='{{allMarkers}}' bindmarkertap='markertap' bindcallouttap='markertap' include-points='{{includePoints}}'></map>
+  <picker class="picker" bindchange="bindMachineChange" value="{{machine_index}}" range="{{machines}}" range-key="name" mode="selector">
+    <view class="macSelect">
+      <text>设备: </text>{{machines[machine_index].name}}
+    </view>
+  </picker>
+  <picker mode="date" value="{{date}}" start="{{date_start}}" end="{{date_end}}" bindchange="bindDateChange">
+    <view class="dateSelect">
+      {{date}}
+    </view>
+  </picker>
+</view>
