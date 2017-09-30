@@ -45,6 +45,8 @@ Page({
         }
         else {
           that.setData({ machines: datas, no_machine_style: 'none' })
+
+          that.RefreshPath();
         }
       }
     } catch (e) {
@@ -100,16 +102,32 @@ Page({
   
   },
   bindDateChange:function(e){
+    if (this.data.date != e.detail.value)
+    {
+      var that = this;
+      that.setData({
+        date: e.detail.value
+      })
+      that.RefreshPath();
+    }
+  },
+  bindMachineChange:function(e){
+    if (this.data.machine_index != e.detail.value)
+    {
+      this.setData({
+        machine_index: e.detail.value
+      })
+      that.RefreshPath();
+    }
+  },
+  RefreshPath:function(){
     var that = this;
-    this.setData({
-      date: e.detail.value
-    })
-    if (this.data.machine_index < this.data.machines.length){
+    if (this.data.machine_index < this.data.machines.length) {
       wx.showLoading({ title: '查询中...', mask: true })
       var m = this.data.machines[this.data.machine_index];
-      common.GetGPSByDate(m.macid, this.data.date,function(datas,error){
+      common.GetGPSByDate(m.macid, this.data.date, function (datas, error) {
         wx.hideLoading();
-        if (datas != null){
+        if (datas != null) {
           var lastTime = null;
           var allPath = [];
           var allMarkers = [];
@@ -117,38 +135,104 @@ Page({
           var lastLat = 0.0;
           var lastLng = 0.0;
           var polyline = null;
-          for(var i = 0;i < datas.length;i++){
+          for (var i = 0; i < datas.length; i++) {
             var gps = datas[i];
-            if (gps != null){
+            if (gps != null) {
               var nowTime = new Date(gps.time).getTime()
-              if (lastTime != null && nowTime - lastTime >= 1800000 && polyline != null){
+              if (lastTime != null && nowTime - lastTime >= 1800000 && polyline != null) {
                 allPath.push(polyline);
                 polyline = null;
-                var desc = '停留' + getStringTimeFromMs(nowTime - lastTime) + '\n时间：' + common.formatTime(new Date(lastTime));
+                var desc = '停留' + getStringTimeFromMs(nowTime - lastTime) + '\n' + common.formatTime(new Date(lastTime));
                 var maker = {
-                    iconPath: '/images/p.png',
-                    callout:{
-                      content: desc,
-                      color:'#000',
-                      fontSize:12,
-                      borderRadius:5,
-                      bgColor:'#dddddd',
-                      padding:5,
-                      display:'BYCLICK'
-                    },
-                    latitude: lastLat,
-                    longitude: lastLng,
-                    width: 32,
-                    height: 32,
-                    anchor: { x: 0.5, y: 1}
+                  iconPath: '/images/p.png',
+                  callout: {
+                    content: desc,
+                    color: '#000',
+                    fontSize: 12,
+                    borderRadius: 5,
+                    bgColor: '#dddddd',
+                    padding: 5,
+                    display: 'BYCLICK'
+                  },
+                  latitude: lastLat,
+                  longitude: lastLng,
+                  width: 32,
+                  height: 32,
+                  anchor: { x: 0.5, y: 1 }
                 };
                 allMarkers.push(maker);
               }
               lastTime = nowTime;
-              if (polyline == null){
-                polyline = { points: [], arrowLine: true, color: '#D01313AA', width: 5, dottedLine:false}
+              if (i == 0) {
+                var desc = '起始位置\n' + common.formatTime(new Date(lastTime));
+                var maker = {
+                  iconPath: '/images/StartPos.png',
+                  callout: {
+                    content: desc,
+                    color: '#000',
+                    fontSize: 12,
+                    borderRadius: 5,
+                    bgColor: '#dddddd',
+                    padding: 5,
+                    display: 'BYCLICK'
+                  },
+                  latitude: gps.lat,
+                  longitude: gps.lng,
+                  width: 32,
+                  height: 32,
+                  anchor: { x: 0.5, y: 1 }
+                };
+                allMarkers.push(maker);
+              } else if (i == datas.length - 1) {
+                if(nowDate == that.data.date)
+                {
+                  var desc = '当前位置\n' + common.formatTime(new Date(lastTime));
+                  var maker = {
+                    iconPath: '/images/CurPos.gif',
+                    callout: {
+                      content: desc,
+                      color: '#000',
+                      fontSize: 12,
+                      borderRadius: 5,
+                      bgColor: '#dddddd',
+                      padding: 5,
+                      display: 'BYCLICK'
+                    },
+                    latitude: gps.lat,
+                    longitude: gps.lng,
+                    width: 32,
+                    height: 32,
+                    anchor: { x: 0.5, y: 0.85 }
+                  };
+                  allMarkers.push(maker);
+                }
+                else{
+                  var desc = '终点\n' + common.formatTime(new Date(lastTime));
+                  var maker = {
+                    iconPath: '/images/EndPos.png',
+                    callout: {
+                      content: desc,
+                      color: '#000',
+                      fontSize: 12,
+                      borderRadius: 5,
+                      bgColor: '#dddddd',
+                      padding: 5,
+                      display: 'BYCLICK'
+                    },
+                    latitude: gps.lat,
+                    longitude: gps.lng,
+                    width: 32,
+                    height: 32,
+                    anchor: { x: 0.5, y: 1 }
+                  };
+                  allMarkers.push(maker);
+                }
+                
               }
-              polyline.points.push({ latitude: gps.lat, longitude: gps.lng});
+              if (polyline == null) {
+                polyline = { points: [], arrowLine: true, color: '#D01313AA', width: 5, dottedLine: false }
+              }
+              polyline.points.push({ latitude: gps.lat, longitude: gps.lng });
               includePoints.push({ latitude: gps.lat, longitude: gps.lng });
               lastLat = parseFloat(gps.lat);
               lastLng = parseFloat(gps.lng);
@@ -158,14 +242,9 @@ Page({
             allPath.push(polyline);
             polyline = null;
           }
-          that.setData({ allploylines: allPath, includePoints: includePoints, allMarkers: allMarkers})
+          that.setData({ allploylines: allPath, includePoints: includePoints, allMarkers: allMarkers })
         }
       });
     }
-  },
-  bindMachineChange:function(e){
-    this.setData({
-      machine_index: e.detail.value
-    })
   }
 })
